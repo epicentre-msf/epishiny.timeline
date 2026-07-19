@@ -1,0 +1,10 @@
+^epishiny\.template\.Rproj$
+^\.Rproj\.user$
+^\.github$
+^\.claude$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^README\.Rmd$
+^CLAUDE\.md$
+^LICENSE\.md$

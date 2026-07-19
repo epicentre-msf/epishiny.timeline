@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/paul/epicentre/epishiny/R/**)",
+      "Read(//Users/paul/epicentre/epishiny/inst/**)",
+      "Read(//Users/paul/epicentre/epishiny/man/**)"
+    ]
+  }
+}
