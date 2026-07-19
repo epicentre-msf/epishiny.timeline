@@ -179,13 +179,14 @@ timeline_ui <- function(
             open = "closed",
             inputs_ui
           ),
-          highcharter::highchartOutput(ns("chart"), height = "100%")
+          tags$div(class = "overflow-auto h-100", uiOutput(ns("chart_ui")))
         )
       )
     } else {
       bslib::card_body(
         padding = 0,
-        highcharter::highchartOutput(ns("chart"), height = "100%")
+        class = "overflow-auto",
+        uiOutput(ns("chart_ui"))
       )
     }
   )
@@ -497,6 +498,16 @@ timeline_server <- function(
       intersect(facility_ids(), sel)
     })
 
+    # size the chart to the number of cases: one fixed-height row per case, so
+    # the plot keeps a constant row height and the card scrolls when there are
+    # many cases, instead of stretching (and reflowing) to fill the card.
+    row_px <- 40
+    output$chart_ui <- renderUI({
+      n <- length(plot_ids())
+      height <- if (n > 0) max(n * row_px + 80, 240) else 240
+      highcharter::highchartOutput(ns("chart"), height = paste0(height, "px"))
+    })
+
     # ---- chart -------------------------------------------------------------
     output$chart <- highcharter::renderHighchart({
       ids <- plot_ids()
@@ -618,7 +629,7 @@ timeline_server <- function(
       )
 
       highcharter::highchart() |>
-        highcharter::hc_chart(type = "xrange") |>
+        highcharter::hc_chart(type = "xrange", animation = FALSE) |>
         # two tiers: bare day numbers near the plot, month band above them
         highcharter::hc_xAxis_multiples(
           list(
