@@ -1,4 +1,4 @@
 library(testthat)
-library(epishiny.template)
+library(epishiny.timeline)
 
-test_check("epishiny.template")
+test_check("epishiny.timeline")

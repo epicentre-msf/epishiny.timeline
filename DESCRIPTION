@@ -1,23 +1,23 @@
-Package: epishiny.template
-Title: Template for Building Standalone 'epishiny' Module Packages
+Package: epishiny.timeline
+Title: Patient Care-Pathway Timeline Module for 'epishiny'
 Version: 0.0.0.9000
 Authors@R:
-    person("Paul", "Campbell", , "paul.campbell@epicentre.msf.org",
-           role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-1018-6606"))
-Description: A starter package for authoring additional 'epishiny' modules as
-    standalone R packages. Keeps the core 'epishiny' package small while
-    letting downstream module packages share its conventions, options, and
-    cross-module reactive plumbing. Deliberately does *not* depend on
-    'epishiny' itself: small helpers are mirrored locally so a child module
-    can be installed without pulling in 'epishiny''s heavier visualisation
-    dependencies (e.g. 'leaflet', 'sf', 'highcharter'). Replace the package
-    name, the placeholder module ('mymodule_ui'/'mymodule_server'), the
-    asset path prefix and the metadata in this file before publishing.
+    person("Hugo", "Soubrier", , "hugo.soubrier@epicentre.msf.org",
+           role = c("aut", "cre"))
+Description: A standalone 'epishiny' module that draws patient care-pathway
+    timelines. Each case is shown as one row of a Highcharts 'xrange' chart,
+    from symptom onset to exit (recovery or death), with the health
+    structures visited drawn as rectangles over the disease phase and an
+    optional supposed-incubation window. The module follows the 'epishiny'
+    module conventions (a 'bslib' card with a gear-toggled options panel and
+    the cross-module reactive contract) so it composes alongside the core
+    'epishiny' time, place and person modules. Following the module-package
+    model, it does not depend on 'epishiny' itself: small helpers are mirrored
+    locally so it installs without pulling in 'epishiny''s full set of
+    visualisation dependencies.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
 Depends:
     R (>= 4.1.0)
 Imports:
@@ -25,18 +25,25 @@ Imports:
     bsicons,
     cli,
     dplyr,
-    htmltools,
+    forcats,
+    glue,
     magrittr,
+    purrr,
     rlang,
     shiny (>= 1.5.0),
     shinyjs,
-    shinyWidgets
+    shinyWidgets,
+    stringr,
+    tidyr,
+    tidyselect
 Suggests:
     epishiny,
+    highcharter,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
     waiter
 Config/testthat/edition: 3
-URL: https://github.com/epicentre-msf/epishiny.template
-BugReports: https://github.com/epicentre-msf/epishiny.template/issues
+URL: https://github.com/epicentre-msf/epishiny.timeline
+BugReports: https://github.com/epicentre-msf/epishiny.timeline/issues
+Config/roxygen2/version: 8.0.0

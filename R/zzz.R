@@ -1,23 +1,29 @@
 #' @keywords internal
 "_PACKAGE"
 
+# Non-standard-evaluation column names used inside the module's dplyr / tidyr
+# pipelines. Declared here so `R CMD check` does not flag them as undefined
+# global variables.
+utils::globalVariables(c(
+  ".id", "age", "sex", "sex_age", "name", "outcome", "label", "y",
+  "date_onset", "date_exit", "onset_end", "exit_end", "incub_start",
+  "incub_days", "visit", "hf_name", "hf_abbr", "hf_start", "hf_end",
+  "hf_end_raw", "is_last_visit"
+))
+
 # -----------------------------------------------------------------------------
 # Package load hooks
 #
-# Each module package needs a *unique* shiny resource path prefix so its
-# CSS / JS assets do not collide with `epishiny`'s own `"epishiny/"` prefix
-# (set in epishiny's own `.onLoad`). When you fork this template:
-#
-#   1. Rename the package in DESCRIPTION (e.g. `epishiny.lab`).
-#   2. Replace `"epishiny.template"` below with that same name.
-#   3. Update the `src=`/`href=` paths in `use_epishiny_template()`
-#      (R/utils.R) to match.
+# `.onLoad` registers this package's assets under its own shiny resource-path
+# prefix (`"epishiny.timeline"`) so its CSS / JS do not collide with
+# `epishiny`'s own `"epishiny/"` prefix. The prefix must match the `src=` /
+# `href=` paths in `use_epishiny_timeline()` (R/utils.R).
 # -----------------------------------------------------------------------------
 
 .onLoad <- function(libname, pkgname) {
   shiny::addResourcePath(
-    "epishiny.template",
-    system.file("assets", package = "epishiny.template")
+    "epishiny.timeline",
+    system.file("assets", package = "epishiny.timeline")
   )
 }
 

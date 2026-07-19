@@ -1,7 +1,8 @@
-^epishiny\.template\.Rproj$
+^epishiny\.timeline\.Rproj$
 ^\.Rproj\.user$
 ^\.github$
 ^\.claude$
+^dev$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$

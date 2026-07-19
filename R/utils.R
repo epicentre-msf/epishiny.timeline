@@ -10,22 +10,19 @@
 #' Add module-package shared assets to the page
 #'
 #' Mirrors `epishiny:::use_epishiny()` but points at this package's own
-#' `inst/assets/` tree (registered in [.onLoad]). Call once per UI from your
+#' `inst/assets/` tree (registered in [.onLoad]). Call once per UI from the
 #' module's `*_ui()` function. Wrap in [shiny::singleton()] so it is only
 #' inserted into the DOM once.
 #'
-#' Rename this function (e.g. `use_epishiny_lab`) and update the `src=`/
-#' `href=` prefixes when you fork this template.
-#'
 #' @return A `<head>` tag list wrapped in [shiny::singleton()].
 #' @noRd
-use_epishiny_template <- function() {
+use_epishiny_timeline <- function() {
   header <- shiny::tags$head(
-    shiny::tags$script(src = "epishiny.template/js/main.js"),
+    shiny::tags$script(src = "epishiny.timeline/js/main.js"),
     shiny::tags$link(
       rel = "stylesheet",
       type = "text/css",
-      href = "epishiny.template/css/styles.css"
+      href = "epishiny.timeline/css/styles.css"
     ),
     shinyjs::useShinyjs()
   )
