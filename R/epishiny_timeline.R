@@ -179,13 +179,13 @@ timeline_ui <- function(
             open = "closed",
             inputs_ui
           ),
-          highcharter::highchartOutput(ns("chart"))
+          highcharter::highchartOutput(ns("chart"), height = "100%")
         )
       )
     } else {
       bslib::card_body(
         padding = 0,
-        highcharter::highchartOutput(ns("chart"))
+        highcharter::highchartOutput(ns("chart"), height = "100%")
       )
     }
   )
